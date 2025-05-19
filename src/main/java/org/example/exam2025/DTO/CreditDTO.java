@@ -15,13 +15,11 @@ import java.util.List;
 public class CreditDTO {
     private Long id;
     private Date dateDemande;
-    private StatusCredit statut;
-    private Date dateAcceptation;
-    private Double montant;
-    private Integer duree;
-    private Double tauxInteret;
+    private String statut;
+    private Date dateAcception;
+    private double montant;
+    private int dureeRemboursement;
+    private double tauxInteret;
     private Long clientId;
-    private String clientNom;
-    private List<Long> remboursementsIds;
-    private String creditType; // Pour distinguer le type de crédit
+
 }
