@@ -1,0 +1,21 @@
+<h2>Liste des Remboursements</h2>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Montant</th>
+      <th>Date</th>
+      <th>Type</th>
+      <th>Crédit ID</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let remboursement of remboursements">
+      <td>{{ remboursement.id }}</td>
+      <td>{{ remboursement.montant }}</td>
+      <td>{{ remboursement.dateRemboursement }}</td>
+      <td>{{ remboursement.type }}</td>
+      <td>{{ remboursement.creditId }}</td>
+    </tr>
+  </tbody>
+</table>
