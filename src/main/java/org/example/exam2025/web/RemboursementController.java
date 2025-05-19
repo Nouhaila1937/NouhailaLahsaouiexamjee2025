@@ -14,6 +14,8 @@ import java.util.Date;
 import java.util.List;
 
 @RestController
+@RequestMapping("/remboursements")
+
 public class RemboursementController {
 
     private final RemboursementService remboursementService;

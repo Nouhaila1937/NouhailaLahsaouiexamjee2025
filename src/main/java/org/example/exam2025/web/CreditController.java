@@ -13,6 +13,7 @@ import java.util.Date;
 import java.util.List;
 
 @RestController
+@RequestMapping("/credits")
 public class CreditController {
 
     private final CreditService creditService;
