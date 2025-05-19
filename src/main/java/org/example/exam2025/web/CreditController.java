@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
@@ -14,6 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/credits")
+@CrossOrigin("*")
 public class CreditController {
 
     private final CreditService creditService;
@@ -24,18 +26,21 @@ public class CreditController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasAnyAuthority('SCOPE_CLIENT', 'SCOPE_ADMIN', ' SCOPE_EMPLOYEE')")
     public ResponseEntity<CreditDTO> getCreditById(@PathVariable Long id) {
         CreditDTO credit = creditService.getCreditById(id);
         return ResponseEntity.ok(credit);
     }
 
     @GetMapping
+    @PreAuthorize("hasAnyAuthority('SCOPE_CLIENT', 'SCOPE_ADMIN', ' SCOPE_EMPLOYEE')")
     public ResponseEntity<List<CreditDTO>> getAllCredits() {
         List<CreditDTO> credits = creditService.getAllCredits();
         return ResponseEntity.ok(credits);
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyAuthority( 'SCOPE_ADMIN', ' SCOPE_EMPLOYEE')")
     public ResponseEntity<Void> deleteCredit(@PathVariable Long id) {
         creditService.deleteCredit(id);
         return ResponseEntity.noContent().build();
