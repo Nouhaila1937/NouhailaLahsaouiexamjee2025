@@ -1,23 +1,25 @@
 package org.example.exam2025.Entities;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.example.exam2025.Enum.TypeRemboursement;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Date;
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Client {
+public class Remboursement {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nom;
-    private String email;
-    @OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
-    private List<Credit> credits = new ArrayList<>();
+    private Date date;
+    private Double montant;
+    private TypeRemboursement type; // Mensualité, Remboursement anticipé
+    @ManyToOne
+    private Credit credit;
 
 }
